@@ -1,53 +1,41 @@
-#language: pt
+            #language: pt
 
 
 
-Funcionalidade: Tela de configuração de produto
-Como cliente da EBAC-Shop 
-quero configurar meu produto
-
-Cenário: selção de cores
-Dado que eu selecione uma cor
-Quando a cor selecionada for "Vermelho"
-Então uma imagem do produto deve aparecer com a cor "vermelho"
-E a opção selecionada deve ficar marcada na tabela de selção de cores
+             Funcionalidade: Tela de configuração de produto
+ 
 
 
+             Contexto: dado que eu queira confugurar o produto ao meu gosto
+  
 
 
-Cenário: seleção de tamanho 
-Dado que eu selecione um tamanho
-Quando eu selecionar o tamanho "M"
-Então a opção "M" deve ficar marcada na tabela de seleção de tamahos
+             Esquema do Cenário: seleção de cor tamanho e quantidade
+             Quando selecionar <cor>, <tamanho> e <quantidade>
+             Então o produto poderá ser "dicionado ao carrinho"
+
+             Exemplos:
+             | cor      | tamanho | quantidade |
+             | azul     | S       | 1          |
+             | laranja  | M       | 2          |
+             | vermelho | L       | 3          |
 
 
-
-
-Cenário: Quantidade de produtos
-
-Contexto: que eu se lecione a quantidade de produtos
-
-
-Quando o número selecionado estiver entre "1" 
-E "10"
-Então a quantidade selecionada deve ficar marcada da tabela de quantidade
-
-Quando o número selecionado for "1" 
-E "10"
-Então o botão de seleção de quantidade deve para de funcionar
+             Cenário: botão limpar
+             Dado que eu queira voltar a "co" e "tamanho"  original
+             Quando apertar o  o botão "Limpar"
+             Então deve voltar o produto ao "estado original"
 
 
 
 
-Cenário: botão limpar
-Dado que eu queira voltar a cor e tamanho original
-Quando apertar o botão o botão "Limpar"
-Então o produto deve voltar o produto deve voltar ao estado original
+             Cenário: quandidade de produto por venda válida
+             Dado que eu queria selecionar a "quantidade" de produto
+             Quando selecionar um número entre "1" e "10"
+             Então o produto poderá ser "adicionado ao carrinho"
+            
 
-
-
-Cenário: Botão de compra
-Dado que queira comprar o produto
-Quando apertar o botão "comprar"
-Então o produto deve ser inserido ao carrinho
-
+             Cenário: quantiade de produto inválida
+             Dado que eu queria selecionar a "quantidade" de produto
+             Quando o numero selecionad for "<1" ou "10>" 
+             Então o produto não poderá ser "adicionado ao carrinho"
